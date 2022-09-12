@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 // Create route for search
 app.get('/', (req, res) => {
-  res.send('This is the Search Page')
+  res.render('search')
 })
 // Create route for results
 app.get('/results', (req, res) => {
