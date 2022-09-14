@@ -12,14 +12,16 @@
 <!-- Results area -->
 
 <section>
-{{#each resultsKey as |result|}}
-	<span>{{result.url}}</span>
-	<h2><a href="#">{{result.title}}</a></h2>
-	<p>{{result.description}}</p>
+{{#each resultsKey as |data|}}
+	<span>{{data.url}}</span>
+	<h2><a href="#">{{data.title}}</a></h2>
+	<p>{{data.description}}</p>
 	<ul>
+		{{#each data.links as |link|}}
 		<li>
-			<a href="#"></a>
+			<a href="#">{{link.title}}</a>
 		</li>
-		</ul>
 		{{/each}}
+	</ul>
+	{{/each}}
 </section>
