@@ -52,8 +52,17 @@ let results = [
 ]
 
 //Views
+// Create GET controller
+// router.get('/results', (req, res) => {
+//   res.render('results', {
+//     resultsKey: results
+//   })
+// })
+
 // Create POST controller
-router.get('/results', (req, res) => {
+router.post('/', (req, res) => {
+  // to log the result of the search input
+  // console.log(req.body)
   res.render('results', {
     resultsKey: results
   })
