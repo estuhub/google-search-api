@@ -5,7 +5,7 @@ const router = express.Router()
 //Data
 let results = [
   {
-    title: 'JS tutorials',
+    title: 'videos',
     description: 'The best JavaScript tutorials in the galaxy!',
     url: 'https://www.w3schools.com',
     links: [
@@ -20,7 +20,7 @@ let results = [
     ]
   },
   {
-    title: 'JS tutorials',
+    title: 'tutorials',
     description: 'The best JavaScript tutorials in the galaxy!',
     url: 'https://www.w3schools.com',
     links: [
@@ -35,7 +35,7 @@ let results = [
     ]
   },
   {
-    title: 'JS tutorials',
+    title: 'pictures',
     description: 'The best JavaScript tutorials in the galaxy!',
     url: 'https://www.w3schools.com',
     links: [
@@ -59,12 +59,21 @@ let results = [
 //   })
 // })
 
+const filterResults = (arr, search) => {
+  return arr.filter(result => result.title.includes(search))
+}
+
 // Create POST controller
 router.post('/', (req, res) => {
-  // to log the result of the search input
+  // log result on terminal
   // console.log(req.body)
+
+  // this is the input <input type="text" name="search" /> of the user from search.hbs
+  let searchValue = req.body.search
+
+  // this is what you render
   res.render('results', {
-    resultsKey: results
+    resultsKey: filterResults(results, searchValue)
   })
 })
 
