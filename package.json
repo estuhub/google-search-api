@@ -7,6 +7,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "cookie-parser": "~1.4.4",
     "dotenv": "^8.2.0",
     "eslint-plugin-html": "^6.2.0",

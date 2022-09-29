@@ -1,29 +1,37 @@
-// Import Packages
+// Packages
 const express = require('express')
 const router = express.Router()
 const Results = require('../models/results')
 
-//Views
-const filterResults = (arr, search) => {
-  return arr.filter(result => result.title.includes(search))
-}
+// Render filtered results
+router.get('/', async (req, res) => {
+  try {
 
-// Create POST controller
-router.post('/', async (req, res) => {
-  // Read from DB with .find({}) waiting with async/await
-  let resultsKey = await Results.find({})
-  // log result on terminal
-  // console.log(resultsKey)
+		// 1. Get Data
+		let results = await Results.find({
+			title: { $regex: req.query.search, $options: 'i' }
+		})
+		// 2. Respond
+		res.send(results)
 
-  // this is the input <input type="text" name="search" /> of the user from search.hbs
-  let searchValue = req.body.search
-
-  // this is what you render
-  res.render('results', {
-    // results
-    resultsKey: filterResults()
-  })
+  } catch (err) {
+    res.send(err)
+  }
 })
 
-// Export module
+// Export
 module.exports = router
+
+// let search = 'java'//req.query.searchInputForm
+// // DB filter
+// let sc = { $regex: search, $options: 'i' }
+// let exactMatch = async search => {
+//   let resultsURL = await Results.find({})
+//   return resultsURL
+// }
+// // render page
+// res.send({
+//   results: await exactMatch(search),
+//   resultsCountStr: 'abc',
+//   searchText: 'searchTerm'
+// })
