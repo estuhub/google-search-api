@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
   // this is what you render
   res.render('results', {
     // results
-    resultsKey: filterResults(resultsKey, searchValue)
+    resultsKey: filterResults()
   })
 })
 
