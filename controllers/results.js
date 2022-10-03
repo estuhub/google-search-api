@@ -12,6 +12,7 @@ router.get('/', async (req, res) => {
 			title: { $regex: req.query.search, $options: 'i' }
 		})
 		// 2. Respond
+		console.log('it worked');
 		res.send(results)
 
   } catch (err) {
